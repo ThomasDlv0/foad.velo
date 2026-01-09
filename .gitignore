@@ -1,0 +1,68 @@
+# RESAVELO - .gitignore
+
+# Images uploadées des vélos (ne pas commiter les images de production)
+assets/imgs/velos/*
+!assets/imgs/velos/.gitkeep
+
+# Configuration locale de la base de données (optionnel)
+# config/db_connect.php
+
+# Fichiers système macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+error_log
+access_log
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Temporary files
+tmp/
+temp/
+cache/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# PHP
+vendor/
+composer.phar
+composer.lock
+.phpunit.result.cache
+
