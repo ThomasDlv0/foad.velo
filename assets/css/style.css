@@ -1,0 +1,675 @@
+/**
+ * RESAVELO - Styles principaux
+ * Système de location de vélos
+ */
+
+/* === Reset & Variables === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #06b6d4;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--background);
+}
+
+/* === Layout === */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main {
+    min-height: calc(100vh - 140px);
+    padding: 30px 0;
+}
+
+/* === Header === */
+.header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    box-shadow: var(--shadow);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+    background: #eff6ff;
+}
+
+.nav-link-admin {
+    background: var(--primary-color);
+    color: white;
+}
+
+.nav-link-admin:hover {
+    background: var(--primary-hover);
+    color: white;
+}
+
+/* === Hero Section === */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.hero p {
+    font-size: 18px;
+    color: var(--text-secondary);
+}
+
+/* === Buttons === */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #475569;
+}
+
+.btn-success {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: white;
+}
+
+.btn-info {
+    background: var(--info-color);
+    color: white;
+}
+
+.btn-disabled {
+    background: #cbd5e1;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+/* === Filters === */
+.filters {
+    background: var(--surface);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.filters h3 {
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.filter-form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.filter-group input[type="number"],
+.filter-group input[type="text"],
+.filter-group input[type="email"],
+.filter-group input[type="date"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* === Vélos Grid === */
+.velos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.velo-card {
+    background: var(--surface);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.velo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.velo-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+}
+
+.velo-image i {
+    font-size: 80px;
+    color: var(--primary-color);
+}
+
+.velo-image .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.velo-content {
+    padding: 20px;
+}
+
+.velo-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.velo-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.velo-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.velo-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* === Badges === */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge-success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.badge-danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.badge-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge-info {
+    background: #cffafe;
+    color: #155e75;
+}
+
+.badge-secondary {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+/* === Alerts === */
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid var(--success-color);
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid var(--danger-color);
+}
+
+.alert-info {
+    background: #dbeafe;
+    color: #1e40af;
+    border-left: 4px solid var(--info-color);
+}
+
+/* === Forms === */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* === Reservation Form === */
+.reservation-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.velo-summary,
+.reservation-form-container {
+    background: var(--surface);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.velo-summary h3,
+.reservation-form-container h3 {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.velo-summary-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.price-info {
+    padding: 15px;
+    background: #eff6ff;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.estimated-price {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f0fdf4;
+    border-radius: 8px;
+    border: 2px dashed var(--success-color);
+}
+
+.estimated-price .total {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.discount-info {
+    color: var(--success-color);
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* === Reservations List === */
+.reservations-list {
+    margin-top: 30px;
+}
+
+.reservation-card {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    gap: 20px;
+}
+
+.reservation-image {
+    width: 150px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+}
+
+.reservation-image i {
+    font-size: 60px;
+    color: var(--primary-color);
+}
+
+.reservation-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.reservation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.reservation-number {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.reservation-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.info-item strong {
+    color: var(--text-primary);
+}
+
+.reservation-status {
+    display: flex;
+    gap: 10px;
+}
+
+.status-badge {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-confirmed {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-cancelled {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-completed {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+/* === Search Section === */
+.search-section {
+    background: var(--surface);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.search-form {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.search-form .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* === Help Section === */
+.help-section {
+    background: var(--surface);
+    padding: 15px;
+    border: 1px solid var(--border);
+    margin-top: 20px;
+}
+
+.help-section ol {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.help-section li {
+    margin-bottom: 8px;
+}
+
+/* === Page Header === */
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h2 {
+    font-size: 32px;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+}
+
+/* === Footer === */
+.footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 20px 0;
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 50px;
+}
+
+/* === Utility Classes === */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-secondary);
+}
+
+.no-results,
+.no-data {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .reservation-container {
+        grid-template-columns: 1fr;
+    }
+
+    .reservation-card {
+        flex-direction: column;
+    }
+
+    .reservation-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .filter-form {
+        flex-direction: column;
+    }
+
+    .filter-actions {
+        width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
