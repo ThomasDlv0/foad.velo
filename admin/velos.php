@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Gestion des vélos - Liste
  * RESAVELO - Système de location de vélos
@@ -30,6 +31,7 @@ $pageTitle = "Gestion des vélos";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +39,7 @@ $pageTitle = "Gestion des vélos";
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
+
 <body>
     <header class="header admin-header">
         <div class="container">
@@ -91,12 +94,20 @@ $pageTitle = "Gestion des vélos";
                                 <tr>
                                     <td><?= $velo['id'] ?></td>
                                     <td>
-                                        <i class="fas fa-bicycle table-icon"></i>
+                                        <?php
+                                        $imagePath = '../assets/imgs/velos/' . htmlspecialchars($velo['image_url']);
+                                        if (!file_exists($imagePath)): ?>
+                                            <i class="fas fa-bicycle table-icon"></i>
+                                        <?php else: ?>
+                                            <img src="<?= $imagePath ?>"
+                                                alt="Image actuelle"
+                                                style="max-width: 200px; border-radius: 8px; margin: 10px 0;">
+                                        <?php endif; ?>
                                     </td>
                                     <td><strong><?= htmlspecialchars($velo['name']) ?></strong></td>
                                     <td>
                                         <small><?= htmlspecialchars(substr($velo['description'], 0, 60)) ?>
-                                        <?= strlen($velo['description']) > 60 ? '...' : '' ?></small>
+                                            <?= strlen($velo['description']) > 60 ? '...' : '' ?></small>
                                     </td>
                                     <td><?= formatPrice($velo['price']) ?></td>
                                     <td class="text-center">
@@ -111,13 +122,13 @@ $pageTitle = "Gestion des vélos";
                                     </td>
                                     <td class="actions-cell">
                                         <a href="velo_form.php?id=<?= $velo['id'] ?>"
-                                           class="btn btn-sm btn-secondary" title="Modifier">
+                                            class="btn btn-sm btn-secondary" title="Modifier">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="velos.php?action=delete&id=<?= $velo['id'] ?>"
-                                           class="btn btn-sm btn-danger"
-                                           title="Supprimer"
-                                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce vélo ?')">
+                                            class="btn btn-sm btn-danger"
+                                            title="Supprimer"
+                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce vélo ?')">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
@@ -140,5 +151,5 @@ $pageTitle = "Gestion des vélos";
         </div>
     </footer>
 </body>
-</html>
 
+</html>
