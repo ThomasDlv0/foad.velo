@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Page d'accueil - Catalogue des vélos
  * RESAVELO - Système de location de vélos
@@ -27,6 +28,7 @@ $pageTitle = "Catalogue des vélos";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +36,7 @@ $pageTitle = "Catalogue des vélos";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
     <header class="header">
         <div class="container">
@@ -67,12 +70,12 @@ $pageTitle = "Catalogue des vélos";
                     <div class="filter-group">
                         <label for="prix_min">Prix min (€/jour)</label>
                         <input type="number" id="prix_min" name="prix_min" min="0" step="1"
-                               value="<?= $_GET['prix_min'] ?? '' ?>" placeholder="0">
+                            value="<?= $_GET['prix_min'] ?? '' ?>" placeholder="0">
                     </div>
                     <div class="filter-group">
                         <label for="prix_max">Prix max (€/jour)</label>
                         <input type="number" id="prix_max" name="prix_max" min="0" step="1"
-                               value="<?= $_GET['prix_max'] ?? '' ?>" placeholder="100">
+                            value="<?= $_GET['prix_max'] ?? '' ?>" placeholder="100">
                     </div>
                     <div class="filter-actions">
                         <button type="submit" class="btn btn-primary">Filtrer</button>
@@ -90,7 +93,15 @@ $pageTitle = "Catalogue des vélos";
                     <?php foreach ($velos as $velo): ?>
                         <article class="velo-card">
                             <div class="velo-image">
-                                <i class="fas fa-bicycle"></i>
+                                <?php
+                                $imagePath = '../assets/imgs/velos/' . htmlspecialchars($velo['image_url']);
+                                if (!file_exists($imagePath)): ?>
+                                    <i class="fas fa-bicycle"></i>
+                                <?php else: ?>
+                                    <img src="<?= $imagePath ?>"
+                                        alt="Image actuelle"
+                                        style="max-width: 200px; border-radius: 8px; margin: 10px 0;">
+                                <?php endif; ?>
 
                                 <?php if ($velo['quantity'] > 0): ?>
                                     <span class="badge badge-success">Disponible (<?= $velo['quantity'] ?>)</span>
@@ -124,5 +135,5 @@ $pageTitle = "Catalogue des vélos";
         </div>
     </footer>
 </body>
-</html>
 
+</html>
